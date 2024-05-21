@@ -1,5 +1,7 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+    "image": {
+        "file": "Dockerfile"
+    },
     "features": {
         "ghcr.io/akhildevelops/devcontainer-features/apt:0": {},
         "ghcr.io/devcontainers-contrib/features/apt-packages:1": {},
@@ -9,16 +11,10 @@
         "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/devcontainers/features/node:1": {}
     },
-    "initializeCommand": "/bin/sh -c 'apt-get update -qq && apt-get install -y ccache cgroup-tools && ccache -M 512G'",
-    "containerEnv": {
-        "UBUNTU_FRONTEND": "noninteractive",
-        "CACHE": "1",
-        "LC_ALL": "C",
-        "USE_CCACHE": "1"
+    "initializeCommand": {
     },
-    "postCreateCommand": [
-        "/bin/sh -c 'ulimit -m 12582912'",
-        "/bin/sh -c 'cgcreate -g cpu:/limited && echo 85000 > /sys/fs/cgroup/cpu/limited/cpu.cfs_quota_us && cgexec -g cpu:limited'",
-        "/bin/sh -c 'apt-get update -qq && apt-get upgrade -y && apt-get install -y bc bison build-essential ccache curl flex glibc-source g++-multilib gcc-multilib binutils-aarch64-linux-gnu git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2 tmate ssh lld neofetch && neofetch'"
-    ]  
+    "containerEnv": {        
+    },
+    "postCreateCommand": {
+    }
 }
