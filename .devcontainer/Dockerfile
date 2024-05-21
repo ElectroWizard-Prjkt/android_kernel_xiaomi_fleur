@@ -15,10 +15,6 @@ RUN apt-get update -qq && \
     libssl-dev libwxgtk3.2-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python3 \
     tmate ssh lld ccache cpulimit neofetch
 
-# Set CPU limit and memory limit
-RUN cpulimit -i -l 50
-RUN ulimit -m 12582912
-
 # Cache and environment configuration
 ENV CACHE=1
 RUN if [ "$CACHE" -eq 1 ]; then \
@@ -41,5 +37,5 @@ RUN chsh -s /bin/bash
 # env bash
 ENV SHELL /bin/bash
 
-# Entry point: start with bash, then switch to fish
-ENTRYPOINT ["/bin/bash", "-c"]
+# Entry point: set ulimit and cpulimit, then start bash
+ENTRYPOINT ["/bin/bash", "-c", "ulimit -m 12582912 && cpulimit -l 50 -- /bin/bash"]
