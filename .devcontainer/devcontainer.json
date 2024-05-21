@@ -1,6 +1,6 @@
 {
-    "image": {
-        "file": "Dockerfile"
+    "build": {
+        "dockerfile": "Dockerfile"
     },
     "features": {
         "ghcr.io/akhildevelops/devcontainer-features/apt:0": {},
@@ -10,11 +10,5 @@
         "ghcr.io/devcontainers/features/common-utils:2": {},
         "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/devcontainers/features/node:1": {}
-    },
-    "initializeCommand": {
-    },
-    "containerEnv": {        
-    },
-    "postCreateCommand": {
     }
 }
